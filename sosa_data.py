@@ -2,6 +2,7 @@ import streamlit as st
 import ftplib
 import numpy as np
 import pandas as pd
+import plotly.express as px
 
 # Fill Required Information
 HOSTNAME = "ftp.drivehq.com"
@@ -52,11 +53,12 @@ if st.button('Plot data'):
     if pwd:
         data = load_data(pwd, nrows)
     if colx=='Temp':
-        st.line_chart(data.Temp)
+        fig = px.line(data.Temp, template='none')
     elif colx=='RH':
-        st.line_chart(data.RH)
+        fig = px.line(data.RH, template='none')
     else:
-        st.line_chart(data.Rainmm)
+        fig = px.line(data.Rainmm, template='none')
+    st.plotly_chart(fig, theme=None, use_container_width=True)
 else:
     st.write('👈 Make selections')
 
