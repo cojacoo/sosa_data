@@ -46,14 +46,17 @@ pwd = st.sidebar.text_input("Enter password 👇")
 st.sidebar.write('Select last records')
 nrows = st.sidebar.slider('last #', -30, -2, -15)
 
-if pwd:
-    data = load_data(pwd, nrows)
+colx = st.sidebar.radio("Select variable", ('RH', 'Temp', 'Rain'))
 
-colx = st.radio("Select variable", ('RH', 'Temp', 'Rain'))
-
-if colx=='Temp':
-    st.line_chart(data.Temp)
-elif colx=='RH':
-    st.line_chart(data.RH)
+if st.button('Plot data'):
+    if pwd:
+        data = load_data(pwd, nrows)
+    if colx=='Temp':
+        st.line_chart(data.Temp)
+    elif colx=='RH':
+        st.line_chart(data.RH)
+    else:
+        st.line_chart(data.Rainmm)
 else:
-    st.line_chart(data.Rainmm)
+    st.write('👈 Make selections')
+
