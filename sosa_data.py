@@ -7,6 +7,7 @@ import pandas as pd
 HOSTNAME = "ftp.drivehq.com"
 USERNAME = "cojacoo"
 
+@st.cache
 def load_data(pwd, nrows=-25):
     # Connect FTP Server
     ftp_server = ftplib.FTP("ftp.drivehq.com", "cojacoo", pwd)
