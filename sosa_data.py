@@ -45,7 +45,7 @@ pwd = st.sidebar.text_input("Enter password 👇")
 st.sidebar.write('Select last records')
 nrows = st.sidebar.slider('last #', -30, -2, -15)
 
-if (pwd & nrwos):
+if (pwd & nrows):
     data = load_data(nrows)
 
 colx = st.radio("Select variable", ('RH', 'Temp', 'Rain'))
